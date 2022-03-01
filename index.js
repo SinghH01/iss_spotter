@@ -1,5 +1,5 @@
 // Require fetchMyIP function
-const fetchMyIP  = require('./iss');
+const {fetchMyIP,fetchCoordsByIP}  = require('./iss');
 
 // function call to obtain user's IP address
 // fetchMyIP((error, ip) => {
@@ -7,6 +7,14 @@ const fetchMyIP  = require('./iss');
 //     console.log("It didn't work!", error);
 //   } else {
 //     console.log('It worked! Returned IP:' , ip);
+//   }
+// });
+
+// fetchCoordsByIP('75.155.85.228',(error, data) => {
+//   if (error) {
+//     console.log(error);
+//   } else {
+//     console.log(data);
 //   }
 // });
 
