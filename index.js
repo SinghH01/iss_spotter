@@ -1,20 +1,20 @@
-// Require fetchMyIP function
-const {fetchMyIP,fetchCoordsByIP}  = require('./iss');
+// Require functions from iss.js
+const {nextISSTimesForMyLocation}  = require('./iss');
 
-// function call to obtain user's IP address
-// fetchMyIP((error, ip) => {
-//   if (error) {
-//     console.log("It didn't work!", error);
-//   } else {
-//     console.log('It worked! Returned IP:' , ip);
-//   }
-// });
+// Function call to fetch ISS flyovers for a user's location
+nextISSTimesForMyLocation((error, passTimes) => {
+  if (error) {
+    return console.log("It didn't work!", error);
+  } else {
+    printOutput(passTimes);
+  }
+});
 
-// fetchCoordsByIP('75.155.85.228',(error, data) => {
-//   if (error) {
-//     console.log(error);
-//   } else {
-//     console.log(data);
-//   }
-// });
-
+//Function to format console.log statements
+const printOutput = function(time) {
+  for (const item of time) {
+    const datetime = new Date(0);
+    datetime.setUTCSeconds(item.risetime);
+    console.log(`Next pass at ${datetime}} for ${item.duration} seconds!`);
+  }
+};
